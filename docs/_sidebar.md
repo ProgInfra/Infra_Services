@@ -1,0 +1,5 @@
+* [Infra Services](/)
+* [Changelog](/CHANGELOG.md)
+* [Ideas](/docs/ideas.md)
+* [Contributing](/CONTRIBUTING.md)
+* [Licence](/LICENCE.md)

@@ -1,0 +1,13 @@
+---
+version: '3.6'
+
+services:
+  infra-services-docs:
+    container_name: infra-services-docs
+    image: infra-services-docs:latest
+    build:
+      context: ..
+      dockerfile: ./docsify/Dockerfile
+    ports:
+    - 6007:80
+    restart: unless-stopped
