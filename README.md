@@ -21,9 +21,9 @@
 
 ## Description
 
-Infrastructure Services Installation and Configuration.
+Infrastructure **Services** Installation and Configuration.
 
-TODO
+Some **services** are more **difficult** to **install** and setup than **classic Container**. For classic Container services, you can use [Stackainer](https://proginfra.gitlab.io/stackainer/#/), but for more **complex** services, this project if for you.
 
 ## Access
 
@@ -36,7 +36,10 @@ TODO
 
 ## Services Available
 
-TODO
+- **[Pterodactyl](./docs/pterodactyl.md)** : Game Servers Management.
+- **[Azuriom](./docs/azuriom.md)** : Game CMS for Servers Management (Blog for Game Servers).
+- **[Kasm](./docs/kasm.md)** : Streaming Containerized apps and Linux on Web App.
+- **[CasaOS](./docs/casaos.md)** : Little Cloud OS.
 
 ## Changelog
 

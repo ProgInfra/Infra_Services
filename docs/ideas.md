@@ -10,8 +10,4 @@
 
 ## Ideas
 
-- Services :
-  - Pterodactyl
-  - Kasm
-  - Azuriom
-  - Casaos
+- Nothing.
