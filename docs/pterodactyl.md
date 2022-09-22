@@ -31,13 +31,46 @@ sudo -s
 
 # Download and Launch the Script
 bash <(curl -s https://pterodactyl-installer.se)
+
+# Panel Install
+> 2 (Wings and Panel)
+> Database Name : panel
+> Database Username : pterodactyl
+> Password : Random
+> Timezone : Europe/Paris
+> Domain Email
+> Admin Email Account : admin@mail.net
+> Admin Username : admin
+> Admin First Name : admin
+> Admin Last Name : 42
+> Admin Password : Your Password
+> FQDN : IP address or Domain name
+> Firewall UFW : y
+> Lets Encrypt : As you wish
+> Install : y
+
+# Wings Install
+> Auto Configure UFW : y
+> Auto Config User for database : y
+> Configure MySQL to be accessed externally : N
+> Database Username : pterodactyluser
+> Database Password : Your Password
+> Lets Encrypt : As you wish
+> Install : y
+
+systemctl enable wings
+systemctl start wings
+systemctl status wings
 ```
 
 ## Configure
 
 Now you have to configure your server :
 
-1) TODO
+1) First Connect to your Pterodactyl Panel
+2) Go to Admin Management
+3) Go to Locations to configure the locations of your servers
+4) Create a new locations with the name of your current server
 
 ## Setup New Game Server
 

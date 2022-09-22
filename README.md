@@ -37,6 +37,7 @@ Some **services** are more **difficult** to **install** and setup than **classic
 ## Services Available
 
 - **[Pterodactyl](./docs/pterodactyl.md)** : Game Servers Management.
+- **[Crafty Controller](./docs/crafty-controller.md)** : Minecraft Servers Management.
 - **[Azuriom](./docs/azuriom.md)** : Game CMS for Servers Management (Blog for Game Servers).
 - **[Kasm](./docs/kasm.md)** : Streaming Containerized apps and Linux on Web App.
 - **[CasaOS](./docs/casaos.md)** : Little Cloud OS.
