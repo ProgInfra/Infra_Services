@@ -1,6 +1,6 @@
 # Infra Services : Crafty Controller
 
-![Icon](./img/pterodactyl.png)
+![Icon](./img/crafty-controller.png)
 
 ## Table Of Contents
 
