@@ -41,6 +41,7 @@ Some **services** are more **difficult** to **install** and setup than **classic
 - **[Azuriom](./docs/azuriom.md)** : Game CMS for Servers Management (Blog for Game Servers).
 - **[Kasm](./docs/kasm.md)** : Streaming Containerized apps and Linux on Web App.
 - **[CasaOS](./docs/casaos.md)** : Little Cloud OS.
+- **[CapRover](./docs/caprover.md)** : Free and Open Source PaaS.
 
 ## Changelog
 
