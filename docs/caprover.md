@@ -35,6 +35,7 @@ You can run just one command to start CapRover installation :
 ```bash
 docker run \
   -e MAIN_NODE_IP_ADDRESS=192.168.1.100 \
+  -e DEFAULT_PASSWORD=testy \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /captain:/captain \
   -p 80:80 \
