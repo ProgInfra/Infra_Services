@@ -27,7 +27,7 @@ If you run in local, you can do this :
 ```bash
 mkdir -p /captain/data && chmod 755 -R /captain
 
-echo  "{\"skipVerifyingDomains\":\"true\"}" >  /captain/data/config-override.json
+echo  "{\"skipVerifyingDomains\":\"true\", \"dockerApiVersion\":\"v1.41\"}" >  /captain/data/config-override.json
 ```
 
 You can run just one command to start CapRover installation :
