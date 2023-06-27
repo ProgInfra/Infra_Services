@@ -10,6 +10,7 @@
   - [Resources](#resources)
   - [Docker](#docker)
   - [Extra Configuration](#extra-configuration)
+  - [Upgrade Ideas](#upgrade-ideas)
 
 ## Description
 
@@ -49,3 +50,11 @@ docker run \
 1) You need to connect to CapRover with IP and port 3000
 2) Next you have to configure you domain, it must be publicly accessible or just use this domain with your IP in local or private environment : 192.168.1.42.sslip.io
 3) Now you can use your CapRover instance (in local or private environment, don't setup HTTPS !).
+
+## Upgrade Ideas
+
+- Integrate `Service Update Override` in CapRover Template to setup these for some services.
+- First Traefik Implementation :
+  - Deploy it with CapRover Template
+  - Upgrade each services to add in `Service Update Override` the network and labels config for Traefik
+- Final Traefik Implementation : Refactor to replace NGINX by Traefik
