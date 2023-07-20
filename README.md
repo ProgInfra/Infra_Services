@@ -42,6 +42,7 @@ Some **services** are more **difficult** to **install** and setup than **classic
 - **[Kasm](./docs/kasm.md)** : Streaming Containerized apps and Linux on Web App.
 - **[CasaOS](./docs/casaos.md)** : Little Cloud OS.
 - **[CapRover](./docs/caprover.md)** : Free and Open Source PaaS.
+- **[Cockpit](./docs/cockpit.md)** : Open Source web interface for server.
 
 ## Changelog
 
