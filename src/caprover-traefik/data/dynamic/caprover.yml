@@ -1,0 +1,21 @@
+---
+http:
+  services:
+    caprover-service:
+      loadBalancer:
+        servers:
+          - url: 'http://captain-captain:3000/'
+  routers:
+    caprover:
+      service: 'caprover-service'
+      rule: 'Host(`caprover.192.168.1.101.sslip.io`)'
+      entrypoints:
+        - 'web'
+      middlewares:
+        - 'https-redirect'
+    caprover-secure:
+      service: 'caprover-service'
+      rule: 'Host(`caprover.192.168.1.101.sslip.io`)'
+      entrypoints:
+        - 'websecure'
+      tls:

@@ -1,0 +1,33 @@
+---
+global:
+  sendAnonymousUsage: false
+  checkNewVersion: true
+
+ping: {}
+
+api:
+  dashboard: true
+  debug: false
+  insecure: true
+
+log:
+  level: 'INFO'
+
+providers:
+  file:
+    directory: '/etc/traefik/dynamic'
+    watch: true
+  docker:
+    endpoint: 'unix:///var/run/docker.sock'
+    exposedByDefault: false
+    network: 'captain-overlay-network'
+    swarmMode: true
+    watch: true
+
+entryPoints:
+  web:
+    address: ':80'
+  websecure:
+    address: ':443'
+    http:
+      tls: {}

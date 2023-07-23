@@ -1,0 +1,36 @@
+---
+networks:
+  captain-overlay-network:
+    name: captain-overlay-network
+    external: true
+  traefik-macvlan-swarm-net:
+    name: traefik-macvlan-swarm-net
+    external: true
+
+volumes:
+  traefik-swarm-macvlan-acme:
+    name: traefik-swarm-macvlan-acme
+
+services:
+  traefik-swarm-macvlan:
+    image: traefik:2.10
+    deploy:
+      labels:
+        - 'traefik.enable=true'
+        - 'traefik.http.services.traefik-standalone-service.loadbalancer.server.port=8080'
+
+        - 'traefik.http.routers.traefik-standalone.rule=Host(`traefik.192.168.1.101.sslip.io`)'
+        - 'traefik.http.routers.traefik-standalone.entrypoints=web'
+        - 'traefik.http.routers.traefik-standalone.middlewares=https-redirect@file'
+
+        - 'traefik.http.routers.traefik-standalone-secure.rule=Host(`traefik.192.168.1.101.sslip.io`)'
+        - 'traefik.http.routers.traefik-standalone-secure.entrypoints=websecure'
+        - 'traefik.http.routers.traefik-standalone-secure.tls=true'
+        - 'traefik.http.routers.traefik-standalone-secure.service=traefik-standalone-service'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - traefik-swarm-macvlan-acme:/acme_data:rw
+      - ./data:/etc/traefik:rw
+    networks:
+      - traefik-macvlan-swarm-net
+      - captain-overlay-network

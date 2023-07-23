@@ -11,6 +11,7 @@
   - [Docker](#docker)
   - [Extra Configuration](#extra-configuration)
   - [Upgrade Ideas](#upgrade-ideas)
+  - [Traefik](#traefik)
 
 ## Description
 
@@ -58,3 +59,37 @@ docker run \
   - Deploy it with CapRover Template
   - Upgrade each services to add in `Service Update Override` the network and labels config for Traefik
 - Final Traefik Implementation : Refactor to replace NGINX by Traefik
+
+## Traefik
+
+If you want, you can setup Traefik as main reverse proxy to manage CapRover and these services :
+
+1) Install [CapRover like above](#docker) and config it with **sslip.io** like this : **192.168.1.100.sslip.io**
+2) Create a new **MacVLAN** docker network configuration with the range you want to configure the IP of Traefik with this command :
+   1) **Command** : `docker network create --config-only --subnet 192.168.1.0/24 -o parent=enp0sXXX --ip-range 192.168.1.100/31 traefik-macvlan-config-net`
+   2) **Parameter** : **subnet** = Your local network, 192.168.1.0/24 here.
+   3) **Parameter** : **parent** = Interface to use for internet (`ip a` to display interfaces)
+   4) **Parameter** : **ip-range** = IP range to define the IP attributed to Traefik, **192.168.1.100/31** here for **Traefik** at **192.168.1.101**
+3) Create the **MacVLAN** docker network attachable to Traefik : `docker network create --driver=macvlan --scope swarm --config-from traefik-macvlan-config-net --attachable traefik-macvlan-swarm-net`
+4) Copy files in `src/caprover-traefik` to `/srv/traefik` and go to this folder
+5) Deploy Traefik service : `docker stack deploy -c compose.yml traefik`
+
+Now when you deploy a new service with CapRover, you can add in App Configs => Service Update Override some labels to configure with Traefik or just with files like in example, if you want to use labels, you can use this, it's an example for Portainer :
+
+```json
+{
+  "Labels": {
+    "traefik.enable": "true",
+    "traefik.http.services.portainer-service.loadbalancer.server.port": "9000",
+
+    "traefik.http.routers.portainer.rule": "Host(`portainer.192.168.1.101.sslip.io`)",
+    "traefik.http.routers.portainer.entrypoints": "web",
+    "traefik.http.routers.portainer.middlewares": "https-redirect@file",
+
+    "traefik.http.routers.portainer-secure.rule": "Host(`portainer.192.168.1.101.sslip.io`)",
+    "traefik.http.routers.portainer-secure.entrypoints": "websecure",
+    "traefik.http.routers.portainer-secure.tls": "true",
+    "traefik.http.routers.portainer-secure.service": "portainer-service"
+  }
+}
+```
